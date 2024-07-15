@@ -6,7 +6,7 @@
 /*   By: oachbani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:40:25 by oachbani          #+#    #+#             */
-/*   Updated: 2024/07/15 19:32:06 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:33:43 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,26 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	p = (char *)malloc(ft_len(strs, sep, size) + 1);
 	if(!p)
-		return(NULL);
+		return(NULL);	
 	ft_copy(strs, sep, p,size);
 	return (p);
+}
+#include<stdio.h>
+int main(void)
+{
+    char **strs;
+    char *separator;
+    char *result;
+    int size;
+
+    size = 3;
+    strs[0] =  "Hello";
+    strs[1] =  "friend,";
+    strs[2] =  "you are awesome";
+
+    separator = " waa ";
+    result = ft_strjoin(size, strs, separator);
+        printf("%s\n", result);
+
+    return 0;
 }

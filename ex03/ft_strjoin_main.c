@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,9 +6,10 @@
 /*   By: oachbani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:40:25 by oachbani          #+#    #+#             */
-/*   Updated: 2024/07/15 17:46:09 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:35:19 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_len(char **str, char *sep, int size)
@@ -21,7 +21,7 @@ int	ft_len(char **str, char *sep, int size)
 
 	i = -1;
 	len = 0;
-	while(++i < size)
+	while(str[++i])
 	{
 		j = -1;
 		while(str[i][++j])
@@ -43,10 +43,10 @@ void	ft_copy(char **str, char *sep , char *p, int size)
 	int	s;
 
 	i = -1;
-	while(++i < size)
+	x = 0;
+	while(str[++i])
 	{
 		j = -1;
-		x = 0;
 		while(str[i][++j])
 		{
 			p[x] = str[i][j];
@@ -62,6 +62,7 @@ void	ft_copy(char **str, char *sep , char *p, int size)
 		}
 	}
 	}
+	p[x] = '\0';
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -90,27 +91,13 @@ int main(void)
     int size;
 
     size = 3;
-    strs = (char **)malloc(size * sizeof(char *));
-    strs[0] = (char *)malloc( 5  + 1);
-    strs[1] = (char *)malloc(7 + 1);
-    strs[2] = (char *)malloc(15 + 1);
-
     strs[0] =  "Hello";
     strs[1] =  "friend,";
     strs[2] =  "you are awesome";
 
-    separator = " ";
+    separator = " waa ";
     result = ft_strjoin(size, strs, separator);
-    if (result)
-    {
         printf("%s\n", result);
-        free(result);
-    }
 
-    for (int i = 0; i < size; i++)
-    {
-        free(strs[i]);
-    }
-    free(strs);
     return 0;
 }

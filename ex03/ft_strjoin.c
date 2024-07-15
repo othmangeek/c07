@@ -6,7 +6,7 @@
 /*   By: oachbani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:40:25 by oachbani          #+#    #+#             */
-/*   Updated: 2024/07/15 19:32:06 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/07/15 21:32:30 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,47 @@
 int	ft_len(char **str, char *sep, int size)
 {
 	int	i;
-	int j;
+	int	j;
 	int	len;
-	int lens;
+	int	lens;
 
 	i = -1;
 	len = 0;
-	while(str[++i])
+	while (str[++i])
 	{
 		j = -1;
-		while(str[i][++j])
+		while (str[i][++j])
 		{
 			len++;
 		}
 	}
 	lens = 0;
-	while(sep[lens])
+	while (sep[lens])
 		lens++;
-	len = len + ( lens * (size - 1));
-	return(len);
+	len = len + (lens * (size - 1));
+	return (len);
 }
-void	ft_copy(char **str, char *sep , char *p, int size)
+
+void	ft_copy(char **str, char *sep, char *p, int size)
 {
 	int	i;
 	int	j;
-	int x;
+	int	x;
 	int	s;
 
 	i = -1;
 	x = 0;
-	while(str[++i])
+	while (str[++i])
 	{
 		j = -1;
-		while(str[i][++j])
+		while (str[i][++j])
+			p[x++] = str[i][j];
+		if (i < size - 1)
 		{
-			p[x] = str[i][j];
-			x++;
+			s = -1;
+			while (sep[++s])
+				p[x++] = sep[s];
 		}
-	if (i < size - 1)
-	{
-		s = -1;
-		while (sep[++s])
-		{
-			p[x] = sep[s];
-			x++;
-		}
-	}
 	}
 	p[x] = '\0';
 }
@@ -72,13 +67,13 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (size == 0)
 	{
 		p = (char *)malloc(1);
-		if(p)
+		if (p)
 			p[0] = '\0';
 		return (p);
 	}
 	p = (char *)malloc(ft_len(strs, sep, size) + 1);
-	if(!p)
-		return(NULL);
-	ft_copy(strs, sep, p,size);
+	if (!p)
+		return (NULL);
+	ft_copy(strs, sep, p, size);
 	return (p);
 }
